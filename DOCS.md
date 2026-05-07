@@ -114,3 +114,24 @@
   - Privacy disclosure covering saved LinkedIn post metadata, tags, and notes stored by the extension
   - Support contact and public website URL
   - Review of whether additional disclosures are required for LinkedIn-related data handling and user-generated notes
+
+### 2026-05-07 Landing Page Pricing CTA Exploration
+- Cloned the GitHub repository to `/home/worker/workspace/taglio` for a targeted landing-page update.
+- Existing `index.html` already contained a static marketing page with hero, features, how-it-works, and CTA sections.
+- Existing CTAs were not wired to a live checkout flow:
+  - Header CTA linked to `#cta`
+  - Hero primary CTA linked to `#cta`
+  - Bottom CTA used `mailto:` for early access
+- No dedicated pricing section existed before this task.
+
+### 2026-05-07 Landing Page Pricing CTA Delivery
+- Updated `index.html` to add a new `#pricing` section with explicit Free and Pro plans.
+- Added the requested plan details:
+  - Free tier: `€0/month` with up to 50 saved posts and basic tags
+  - Pro tier: `$7/month` with unlimited saves, advanced filtering, export, and sync
+- Wired the Stripe payment link `https://buy.stripe.com/7sY8wQgu03eD36qeB5ePE1U` into the key upgrade CTAs:
+  - Header CTA
+  - Hero primary CTA
+  - Pricing section Pro CTA
+  - Bottom CTA primary button
+- Kept a non-payment path for free users via `mailto:` on the Free plan and bottom secondary CTA.
