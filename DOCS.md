@@ -43,3 +43,74 @@
   - Added empty commit `0da4549` (`Trigger master deployment`) and pushed it.
   - GitHub shows Vercel created deployment `4605784256` for that commit, but it is explicitly `Preview`, not production, so `master` is not the production branch that controls the live alias.
 - Current blocker: the repo can trigger Vercel builds through GitHub, but the worker does not have the Vercel/NanoCorp control-plane credential needed to provision the NanoCorp Vercel resource, repair the broken custom-domain alias, or disable deployment protection on the production deployment.
+
+### 2026-05-07 Chrome Extension Packaging Exploration
+- Cloned the GitHub repository to `/home/worker/workspace/taglio` for extension packaging work.
+- Repository contents at clone time: `DOCS.md`, `index.html`, and `vercel.json`.
+- Confirmed there is no existing Chrome extension source tree in the repository root or common subdirectories.
+- Confirmed there is no `manifest.json` anywhere in the working tree.
+- Checked branches and recent history:
+  - `main` contains landing-page and deployment-investigation commits only.
+  - `master` contains only the deployment-trigger commit and no extension source.
+- Conclusion: to complete the packaging task, the extension needs to be created in-repo before it can be packaged and submitted.
+
+### 2026-05-07 Chrome Extension Packaging Delivery
+- Created a new Manifest V3 extension source tree in `extension/`.
+- Added `extension/manifest.json` with:
+  - `manifest_version: 3`
+  - `name: "Taglio"`
+  - description: `Save, tag, and organize LinkedIn posts into a searchable library.`
+  - version: `0.1.0`
+  - icons for `16`, `48`, and `128`
+  - popup action pointing to `popup.html`
+  - `storage` and `tabs` permissions
+  - LinkedIn host permission for `https://www.linkedin.com/*`
+  - a LinkedIn content script (`content.js`) for page metadata extraction
+- Added a polished popup UI in `extension/popup.html`, `extension/popup.css`, and `extension/popup.js`.
+- Popup behavior:
+  - Prefills save data from the active LinkedIn tab when available.
+  - Stores saved posts in `chrome.storage.local`.
+  - Supports tags, notes, search, open, and delete actions in a local saved-post library.
+- Added placeholder icons in `extension/icons/`:
+  - `icon16.png`
+  - `icon48.png`
+  - `icon128.png`
+  - Design: solid indigo background with a white `T`
+- Added `scripts/package-extension.sh` to validate the manifest and generate the Chrome Web Store upload artifact.
+- Generated the upload package at `dist/taglio-extension.zip`.
+
+### 2026-05-07 Chrome Extension Packaging Verification
+- Manifest validation:
+  - `jq` parsed `extension/manifest.json` successfully.
+  - `scripts/package-extension.sh` confirmed Manifest V3, required metadata, and presence of all referenced assets before packaging.
+- JavaScript validation:
+  - `node --check extension/popup.js`
+  - `node --check extension/content.js`
+- Icon validation:
+  - Confirmed PNG outputs exist at `16x16`, `48x48`, and `128x128`.
+- Package validation:
+  - `unzip -l dist/taglio-extension.zip` shows the correct extension root contents:
+    - `manifest.json`
+    - `popup.html`
+    - `popup.css`
+    - `popup.js`
+    - `content.js`
+    - `icons/icon16.png`
+    - `icons/icon48.png`
+    - `icons/icon128.png`
+- Unpacked-load sanity check:
+  - Launched Chrome headless with `--load-extension=/home/worker/workspace/taglio/extension`.
+  - No manifest or missing-file errors were emitted during startup.
+- UI sanity check:
+  - Rendered `popup.html` through a local HTTP server in `agent-browser`.
+  - Confirmed the popup structure and visible copy render correctly in browser preview mode.
+
+### 2026-05-07 Chrome Web Store Submission Notes
+- Package ready for upload: `dist/taglio-extension.zip`
+- Source-of-truth extension files live in `extension/`
+- Chrome Web Store submission will still need non-code business inputs that are not part of this repo:
+  - Store listing copy: full description, short description, and category
+  - Store graphics: screenshots and promotional images
+  - Privacy disclosure covering saved LinkedIn post metadata, tags, and notes stored by the extension
+  - Support contact and public website URL
+  - Review of whether additional disclosures are required for LinkedIn-related data handling and user-generated notes

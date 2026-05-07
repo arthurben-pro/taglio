@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taglio</title>
+    <link rel="stylesheet" href="popup.css" />
+    <script src="popup.js" defer></script>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div class="hero__mark">T</div>
+        <div class="hero__copy">
+          <p class="eyebrow">LinkedIn Library</p>
+          <h1>Taglio</h1>
+          <p class="hero__text">Capture the post, tag the idea, and keep the signal searchable.</p>
+        </div>
+        <span id="context-badge" class="badge">Loading</span>
+      </section>
+
+      <section class="panel panel--context">
+        <div class="panel__header">
+          <p class="panel__eyebrow">Current page</p>
+          <button id="refresh-context" class="ghost-button" type="button">Refresh</button>
+        </div>
+        <h2 id="context-title" class="context-title">Looking for a LinkedIn post…</h2>
+        <p id="context-meta" class="context-meta">Open a LinkedIn post or feed item to prefill the save form.</p>
+      </section>
+
+      <section class="panel">
+        <div class="panel__header">
+          <div>
+            <p class="panel__eyebrow">Save post</p>
+            <p class="panel__subtitle">Tag an idea before it disappears into the feed.</p>
+          </div>
+          <button id="clear-form" class="ghost-button" type="button">Reset</button>
+        </div>
+
+        <form id="save-form" class="form">
+          <label class="field">
+            <span class="field__label">Title</span>
+            <input id="title" name="title" type="text" maxlength="160" required />
+          </label>
+
+          <div class="field-grid">
+            <label class="field">
+              <span class="field__label">Author</span>
+              <input id="author" name="author" type="text" maxlength="120" />
+            </label>
+            <label class="field">
+              <span class="field__label">Tags</span>
+              <input
+                id="tags"
+                name="tags"
+                type="text"
+                maxlength="160"
+                placeholder="Demand Gen, Messaging"
+              />
+            </label>
+          </div>
+
+          <label class="field">
+            <span class="field__label">Post URL</span>
+            <input id="url" name="url" type="url" required />
+          </label>
+
+          <label class="field">
+            <span class="field__label">Notes</span>
+            <textarea
+              id="notes"
+              name="notes"
+              rows="4"
+              maxlength="600"
+              placeholder="Why this matters, where to reuse it, or what the team should pull from it."
+            ></textarea>
+          </label>
+
+          <p id="status" class="status" aria-live="polite"></p>
+          <button class="primary-button" type="submit">Save to Taglio</button>
+        </form>
+      </section>
+
+      <section class="panel panel--library">
+        <div class="panel__header">
+          <div>
+            <p class="panel__eyebrow">Saved library</p>
+            <p id="library-summary" class="panel__subtitle">0 posts saved</p>
+          </div>
+          <input id="search" class="search" type="search" placeholder="Search tags, titles, notes" />
+        </div>
+        <div id="saved-posts" class="library" aria-live="polite"></div>
+      </section>
+    </main>
+  </body>
+</html>
