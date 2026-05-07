@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taglio | Save and Organize LinkedIn Posts</title>
+    <meta
+      name="description"
+      content="Taglio is a Chrome extension that helps teams save, tag, search, and organize the LinkedIn posts worth acting on."
+    />
+    <meta property="og:title" content="Taglio | Save and Organize LinkedIn Posts" />
+    <meta
+      property="og:description"
+      content="Capture LinkedIn posts in one click, organize them with tags, and build a searchable inspiration library."
+    />
+    <meta property="og:type" content="website" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              midnight: "#060816",
+              panel: "#0e1428",
+              ink: "#d9e4ff",
+              muted: "#8ca0d7",
+              accent: "#6d7cff",
+              accentSoft: "#8ea0ff"
+            },
+            boxShadow: {
+              glow: "0 0 0 1px rgba(141,160,255,0.18), 0 24px 80px rgba(67,86,255,0.28)"
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      body {
+        background:
+          radial-gradient(circle at top left, rgba(109, 124, 255, 0.26), transparent 32%),
+          radial-gradient(circle at 85% 15%, rgba(67, 86, 255, 0.22), transparent 24%),
+          linear-gradient(180deg, #060816 0%, #090d1b 52%, #05070f 100%);
+      }
+
+      .grid-glow {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 44px 44px;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen text-ink antialiased">
+    <div class="grid-glow">
+      <header class="mx-auto max-w-6xl px-6 py-6">
+        <nav class="flex items-center justify-between rounded-full border border-white/10 bg-white/5 px-5 py-3 backdrop-blur">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-accent/20 text-lg font-semibold text-accentSoft">T</div>
+            <div>
+              <p class="text-sm font-semibold tracking-[0.24em] text-white">TAGLIO</p>
+              <p class="text-xs text-muted">LinkedIn knowledge, captured cleanly</p>
+            </div>
+          </div>
+          <div class="hidden items-center gap-8 text-sm text-muted md:flex">
+            <a href="#features" class="transition hover:text-white">Features</a>
+            <a href="#how-it-works" class="transition hover:text-white">How it works</a>
+            <a href="#cta" class="transition hover:text-white">Get Taglio</a>
+          </div>
+          <a
+            href="#cta"
+            class="rounded-full border border-accent/40 bg-accent/20 px-4 py-2 text-sm font-medium text-white transition hover:bg-accent/30"
+            >Add to Chrome</a
+          >
+        </nav>
+      </header>
+
+      <main>
+        <section class="mx-auto grid max-w-6xl gap-16 px-6 pb-20 pt-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+          <div>
+            <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-4 py-2 text-sm text-accentSoft">
+              <span class="h-2 w-2 rounded-full bg-accent"></span>
+              Built for founders, marketers, recruiters, and growth teams
+            </div>
+            <h1 class="max-w-3xl text-5xl font-semibold leading-tight text-white md:text-6xl">
+              Turn scattered LinkedIn posts into a searchable team library.
+            </h1>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-muted">
+              Taglio is a Chrome extension that lets you save high-signal LinkedIn posts in one click, organize them with tags, and retrieve the right insight when you need it.
+            </p>
+            <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="#cta"
+                class="rounded-full bg-accent px-6 py-3 text-center text-base font-semibold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-accentSoft"
+                >Install the Chrome extension</a
+              >
+              <a
+                href="#features"
+                class="rounded-full border border-white/10 bg-white/5 px-6 py-3 text-center text-base font-semibold text-white transition hover:bg-white/10"
+                >See how Taglio works</a
+              >
+            </div>
+            <div class="mt-10 grid gap-4 text-sm text-muted sm:grid-cols-3">
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-4">
+                <p class="text-2xl font-semibold text-white">1 click</p>
+                <p class="mt-1">Save any LinkedIn post directly from your feed.</p>
+              </div>
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-4">
+                <p class="text-2xl font-semibold text-white">Smart tags</p>
+                <p class="mt-1">Organize ideas by topic, funnel stage, or campaign.</p>
+              </div>
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-4">
+                <p class="text-2xl font-semibold text-white">Team ready</p>
+                <p class="mt-1">Keep inspiration visible instead of buried in bookmarks.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="absolute inset-0 rounded-[2rem] bg-accent/20 blur-3xl"></div>
+            <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-panel/85 p-6 shadow-glow backdrop-blur">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-sm font-medium text-white">Taglio Workspace</p>
+                  <p class="text-sm text-muted">A cleaner way to keep the best LinkedIn posts close</p>
+                </div>
+                <div class="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-300">
+                  Synced
+                </div>
+              </div>
+
+              <div class="mt-6 rounded-3xl border border-white/10 bg-midnight/70 p-5">
+                <div class="flex items-start justify-between gap-4">
+                  <div>
+                    <p class="text-xs uppercase tracking-[0.22em] text-accentSoft">Saved post</p>
+                    <h2 class="mt-2 text-xl font-semibold text-white">“The best outbound teams write their ICP before they write their sequence.”</h2>
+                    <p class="mt-3 text-sm leading-7 text-muted">
+                      Captured from LinkedIn with author, date, and context so your team can reuse the idea later.
+                    </p>
+                  </div>
+                  <div class="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-xs text-muted">LinkedIn</div>
+                </div>
+
+                <div class="mt-5 flex flex-wrap gap-2">
+                  <span class="rounded-full bg-accent/15 px-3 py-1 text-xs font-medium text-accentSoft">Demand Gen</span>
+                  <span class="rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-white">Messaging</span>
+                  <span class="rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-white">B2B SaaS</span>
+                </div>
+              </div>
+
+              <div class="mt-5 grid gap-4 sm:grid-cols-2">
+                <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+                  <p class="text-sm text-muted">Search instantly</p>
+                  <p class="mt-2 text-base font-semibold text-white">Find the exact post you saved last month with title, tag, or keyword search.</p>
+                </div>
+                <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+                  <p class="text-sm text-muted">Organize by workflow</p>
+                  <p class="mt-2 text-base font-semibold text-white">Build collections for content ideas, recruiting, research, or competitor tracking.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="features" class="mx-auto max-w-6xl px-6 py-16">
+          <div class="max-w-2xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-accentSoft">Features</p>
+            <h2 class="mt-4 text-3xl font-semibold text-white md:text-4xl">Everything you need to stop losing valuable LinkedIn insights.</h2>
+            <p class="mt-4 text-lg leading-8 text-muted">
+              Taglio replaces messy tabs, screenshots, and bookmarks with a focused system for capturing and reusing what matters.
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            <article class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+              <p class="text-sm font-semibold text-accentSoft">One-click saving</p>
+              <p class="mt-3 text-base leading-7 text-muted">
+                Save posts directly from LinkedIn without breaking your workflow or copying links manually.
+              </p>
+            </article>
+            <article class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+              <p class="text-sm font-semibold text-accentSoft">Custom tags</p>
+              <p class="mt-3 text-base leading-7 text-muted">
+                Create a taxonomy that matches your process: content, hiring, sales, product, or market research.
+              </p>
+            </article>
+            <article class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+              <p class="text-sm font-semibold text-accentSoft">Fast retrieval</p>
+              <p class="mt-3 text-base leading-7 text-muted">
+                Search by keyword, author, or topic to surface the right post the moment you need it.
+              </p>
+            </article>
+            <article class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
+              <p class="text-sm font-semibold text-accentSoft">Shared knowledge</p>
+              <p class="mt-3 text-base leading-7 text-muted">
+                Give your team a living source of inspiration instead of relying on individual memory and browser tabs.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="how-it-works" class="mx-auto max-w-6xl px-6 py-16">
+          <div class="rounded-[2rem] border border-white/10 bg-panel/75 p-8 backdrop-blur md:p-10">
+            <div class="max-w-2xl">
+              <p class="text-sm font-semibold uppercase tracking-[0.28em] text-accentSoft">How it works</p>
+              <h2 class="mt-4 text-3xl font-semibold text-white md:text-4xl">Capture. Organize. Reuse.</h2>
+              <p class="mt-4 text-lg leading-8 text-muted">
+                Taglio keeps the flow simple so you can collect great posts now and actually benefit from them later.
+              </p>
+            </div>
+
+            <div class="mt-10 grid gap-6 lg:grid-cols-3">
+              <div class="rounded-[1.75rem] border border-white/10 bg-midnight/60 p-6">
+                <p class="text-sm font-medium text-accentSoft">01</p>
+                <h3 class="mt-3 text-xl font-semibold text-white">Save from LinkedIn</h3>
+                <p class="mt-3 text-base leading-7 text-muted">
+                  Click the Taglio extension when a post is worth keeping. The post metadata and link are stored instantly.
+                </p>
+              </div>
+              <div class="rounded-[1.75rem] border border-white/10 bg-midnight/60 p-6">
+                <p class="text-sm font-medium text-accentSoft">02</p>
+                <h3 class="mt-3 text-xl font-semibold text-white">Tag by intent</h3>
+                <p class="mt-3 text-base leading-7 text-muted">
+                  Add tags that reflect how you will use the post later, from content inspiration to outbound messaging.
+                </p>
+              </div>
+              <div class="rounded-[1.75rem] border border-white/10 bg-midnight/60 p-6">
+                <p class="text-sm font-medium text-accentSoft">03</p>
+                <h3 class="mt-3 text-xl font-semibold text-white">Find it when it matters</h3>
+                <p class="mt-3 text-base leading-7 text-muted">
+                  Search your library in seconds so the insight you saved becomes something your team can actually use.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="cta" class="mx-auto max-w-6xl px-6 py-16">
+          <div class="overflow-hidden rounded-[2.25rem] border border-accent/20 bg-gradient-to-br from-accent/20 via-panel to-midnight p-8 shadow-glow md:p-12">
+            <div class="max-w-3xl">
+              <p class="text-sm font-semibold uppercase tracking-[0.28em] text-accentSoft">CTA</p>
+              <h2 class="mt-4 text-3xl font-semibold text-white md:text-5xl">
+                Build a high-signal LinkedIn repository instead of starting from zero every week.
+              </h2>
+              <p class="mt-5 text-lg leading-8 text-muted">
+                Taglio helps you turn great posts into reusable assets for content, research, recruiting, and growth. Install it, start saving, and make your best finds searchable.
+              </p>
+              <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+                <a
+                  href="mailto:founders@taglio.app?subject=Taglio%20Chrome%20Extension"
+                  class="rounded-full bg-white px-6 py-3 text-center text-base font-semibold text-midnight transition hover:bg-slate-200"
+                  >Request early access</a
+                >
+                <a
+                  href="#features"
+                  class="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-center text-base font-semibold text-white transition hover:bg-white/10"
+                  >Explore the product</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
