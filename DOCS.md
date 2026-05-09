@@ -135,3 +135,15 @@
   - Pricing section Pro CTA
   - Bottom CTA primary button
 - Kept a non-payment path for free users via `mailto:` on the Free plan and bottom secondary CTA.
+
+### 2026-05-09 SEO metadata delivery
+- Re-read `DOCS.md` before making this change.
+- Updated `index.html` `<head>` with:
+  - requested title and 155-character meta description
+  - canonical URL `https://taglio-cyan.vercel.app`
+  - keywords and `robots` meta tags
+  - Open Graph tags: `og:title`, `og:description`, `og:url`, `og:type`
+  - Twitter card tags: `twitter:card`, `twitter:title`, `twitter:description`
+- Added `robots.txt` at repo root with allow-all crawler rules.
+- Added `sitemap.xml` at repo root pointing to `https://taglio-cyan.vercel.app/`.
+- Skipped `og:image` and `twitter:image` because this upstream repo does not contain a promo tile or other committed social-preview asset.
